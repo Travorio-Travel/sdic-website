@@ -28,6 +28,7 @@ export const leaders: Leader[] = [
     ],
     whyStatement: 'Mazin\'s 20+ years of telecommunications infrastructure experience — from mobile network architecture to cybersecurity operations — provides SDIC with the deep infrastructure expertise that is essential for building reliable, secure, and scalable national digital systems in Sudan\'s reconstruction context.',
     initials: 'MF',
+    image: '/images/mazin-fagiri.jpg',
     gradientFrom: '#4A7C59',
     gradientTo: '#1E3A5F',
   },
