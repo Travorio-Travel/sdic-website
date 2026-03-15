@@ -36,7 +36,14 @@ export function ArchitectureDiagram({
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
+  const hasData = nodes?.length > 0 && connections?.length > 0;
+
   useEffect(() => {
+    if (!hasData) return;
+
+    const el = containerRef.current;
+    if (!el) return;
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       setIsVisible(true);
@@ -50,15 +57,14 @@ export function ArchitectureDiagram({
           observer.disconnect();
         }
       },
-      { threshold: 0.3 },
+      { threshold: 0.2 },
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
+    observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [hasData]);
+
+  if (!hasData) return null;
 
   const getNodeById = (id: string) => nodes.find((n) => n.id === id);
 
@@ -81,10 +87,6 @@ export function ArchitectureDiagram({
     secondary: 'fill-[#1E3A5F] stroke-[#0891B2]/60',
     tertiary: 'fill-[#1E3A5F] stroke-[#4A7C59]/60',
   };
-
-  if (!nodes?.length || !connections?.length) {
-    return <div className="h-[300px] rounded-xl bg-gray-100" />;
-  }
 
   return (
     <div ref={containerRef} className={cn('relative', className)}>
