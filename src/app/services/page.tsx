@@ -10,7 +10,7 @@ import {
   governmentDiagram,
   healthcareDiagram,
   infrastructureDiagram,
-} from '@/components/effects/ArchitectureDiagramWrapper';
+} from '@/components/effects/ArchitectureDiagram';
 import {
   Landmark,
   Construction,
