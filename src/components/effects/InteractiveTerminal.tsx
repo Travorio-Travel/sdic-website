@@ -146,8 +146,9 @@ export function InteractiveTerminal() {
     let i = 0;
     const timer = setInterval(() => {
       if (i < bootSequence.length) {
-        setLines((prev) => [...prev, bootSequence[i]]);
+        const line = bootSequence[i];
         i++;
+        setLines((prev) => [...prev, line]);
         scrollToBottom();
       } else {
         clearInterval(timer);
