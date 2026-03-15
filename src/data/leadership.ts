@@ -63,6 +63,7 @@ export const leaders: Leader[] = [
     ],
     whyStatement: 'Rami\'s career trajectory — from building financial systems at JPMorgan Chase to scaling enterprise platforms at The Home Depot to founding a technology startup — represents exactly the combination of institutional discipline and entrepreneurial drive needed to build national digital infrastructure in a reconstruction context.',
     initials: 'RT',
+    image: '/images/rami-taha.jpg',
     gradientFrom: '#0891B2',
     gradientTo: '#1E3A5F',
   },

@@ -73,6 +73,7 @@ export interface Leader {
   career: CareerMilestone[];
   whyStatement: string;
   initials: string;
+  image?: string;
   gradientFrom: string;
   gradientTo: string;
 }
