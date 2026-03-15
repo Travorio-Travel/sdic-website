@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 interface DiagramNode {
@@ -33,38 +33,10 @@ export function ArchitectureDiagram({
 }: ArchitectureDiagramProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
-  const hasData = nodes?.length > 0 && connections?.length > 0;
-
-  useEffect(() => {
-    if (!hasData) return;
-
-    const el = containerRef.current;
-    if (!el) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [hasData]);
-
-  if (!hasData) return null;
+  if (!nodes?.length || !connections?.length) return null;
 
   const getNodeById = (id: string) => nodes.find((n) => n.id === id);
 
