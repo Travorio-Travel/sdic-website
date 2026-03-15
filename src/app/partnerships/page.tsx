@@ -6,7 +6,14 @@ import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
 import { CardSpotlight } from '@/components/shared/CardSpotlight';
 import { Button } from '@/components/ui/Button';
 import { partnerTypes, partnershipModels } from '@/data/partnerships';
-import * as LucideIcons from 'lucide-react';
+import {
+  Landmark,
+  Globe,
+  Building2,
+  TrendingUp,
+  Users,
+  Heart,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Partnership Opportunities — Government, Development Partners & Investors',
@@ -15,12 +22,12 @@ export const metadata: Metadata = {
 };
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Landmark: LucideIcons.Landmark,
-  Globe: LucideIcons.Globe,
-  Building2: LucideIcons.Building2,
-  TrendingUp: LucideIcons.TrendingUp,
-  Users: LucideIcons.Users,
-  Heart: LucideIcons.Heart,
+  Landmark,
+  Globe,
+  Building2,
+  TrendingUp,
+  Users,
+  Heart,
 };
 
 export default function PartnershipsPage() {
