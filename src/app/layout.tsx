@@ -6,7 +6,6 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ScrollProgress } from '@/components/shared/ScrollProgress';
 import { CommandPalette } from '@/components/effects/CommandPalette';
-import { CustomCursor } from '@/components/effects/CustomCursor';
 import { ConsoleEasterEgg } from '@/components/effects/ConsoleEasterEgg';
 
 const inter = Inter({
@@ -104,7 +103,6 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ScrollProgress />
-        <CustomCursor />
         <CommandPalette />
         <ConsoleEasterEgg />
         <Navbar />
