@@ -4,19 +4,29 @@ import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
 import { CardSpotlight } from '@/components/shared/CardSpotlight';
 import { services } from '@/data/services';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import {
+  ArrowRight,
+  Landmark,
+  Construction,
+  HeartPulse,
+  GraduationCap,
+  TrendingUp,
+  Code,
+  GitMerge,
+  BarChart3,
+  ShieldCheck,
+} from 'lucide-react';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Landmark: LucideIcons.Landmark,
-  Construction: LucideIcons.Construction,
-  HeartPulse: LucideIcons.HeartPulse,
-  GraduationCap: LucideIcons.GraduationCap,
-  TrendingUp: LucideIcons.TrendingUp,
-  Code: LucideIcons.Code,
-  GitMerge: LucideIcons.GitMerge,
-  BarChart3: LucideIcons.BarChart3,
-  ShieldCheck: LucideIcons.ShieldCheck,
+  Landmark,
+  Construction,
+  HeartPulse,
+  GraduationCap,
+  TrendingUp,
+  Code,
+  GitMerge,
+  BarChart3,
+  ShieldCheck,
 };
 
 export function ServicePreview() {

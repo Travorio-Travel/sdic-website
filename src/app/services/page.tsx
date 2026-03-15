@@ -5,7 +5,23 @@ import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
 import { CardSpotlight } from '@/components/shared/CardSpotlight';
 import { Button } from '@/components/ui/Button';
 import { services } from '@/data/services';
-import * as LucideIcons from 'lucide-react';
+import { ArchitectureDiagram } from '@/components/effects/ArchitectureDiagram';
+import {
+  governmentDiagram,
+  healthcareDiagram,
+  infrastructureDiagram,
+} from '@/data/architecture-diagrams';
+import {
+  Landmark,
+  Construction,
+  HeartPulse,
+  GraduationCap,
+  TrendingUp,
+  Code,
+  GitMerge,
+  BarChart3,
+  ShieldCheck,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Services — Digital Government, Healthcare, Education & Enterprise Technology',
@@ -14,15 +30,15 @@ export const metadata: Metadata = {
 };
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Landmark: LucideIcons.Landmark,
-  Construction: LucideIcons.Construction,
-  HeartPulse: LucideIcons.HeartPulse,
-  GraduationCap: LucideIcons.GraduationCap,
-  TrendingUp: LucideIcons.TrendingUp,
-  Code: LucideIcons.Code,
-  GitMerge: LucideIcons.GitMerge,
-  BarChart3: LucideIcons.BarChart3,
-  ShieldCheck: LucideIcons.ShieldCheck,
+  Landmark,
+  Construction,
+  HeartPulse,
+  GraduationCap,
+  TrendingUp,
+  Code,
+  GitMerge,
+  BarChart3,
+  ShieldCheck,
 };
 
 export default function ServicesPage() {
@@ -94,6 +110,35 @@ export default function ServicesPage() {
                       </ul>
                     </CardSpotlight>
                   </div>
+
+                  {/* Architecture Diagrams for key services */}
+                  {service.id === 'digital-government' && (
+                    <div className="mt-10 rounded-2xl border border-gray-200 bg-off-white p-6 lg:p-8">
+                      <ArchitectureDiagram
+                        title="Example Solution Architecture"
+                        nodes={governmentDiagram.nodes}
+                        connections={governmentDiagram.connections}
+                      />
+                    </div>
+                  )}
+                  {service.id === 'healthcare-technology' && (
+                    <div className="mt-10 rounded-2xl border border-gray-200 bg-off-white p-6 lg:p-8">
+                      <ArchitectureDiagram
+                        title="Example Solution Architecture"
+                        nodes={healthcareDiagram.nodes}
+                        connections={healthcareDiagram.connections}
+                      />
+                    </div>
+                  )}
+                  {service.id === 'infrastructure-reconstruction' && (
+                    <div className="mt-10 rounded-2xl border border-gray-200 bg-off-white p-6 lg:p-8">
+                      <ArchitectureDiagram
+                        title="Example Solution Architecture"
+                        nodes={infrastructureDiagram.nodes}
+                        connections={infrastructureDiagram.connections}
+                      />
+                    </div>
+                  )}
 
                   {index < services.length - 1 && (
                     <div className="mt-20 border-t border-gray-100" />

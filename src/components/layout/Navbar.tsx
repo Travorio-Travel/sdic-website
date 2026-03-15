@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { navigation } from '@/data/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { CommandPaletteHint } from '@/components/effects/CommandPalette';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -122,7 +123,8 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <CommandPaletteHint />
             <div className="hidden lg:block">
               <Button href={navigation.cta.href} size="sm">
                 {navigation.cta.label}

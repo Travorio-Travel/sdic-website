@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { PageHero } from '@/components/shared/PageHero';
 import { Container } from '@/components/ui/Container';
 import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
@@ -41,14 +42,27 @@ export default function LeadershipPage() {
                 direction={index % 2 === 0 ? 'left' : 'right'}
                 className="lg:col-span-2"
               >
-                <div
-                  className="flex aspect-[3/4] max-w-sm items-center justify-center rounded-2xl text-6xl font-bold text-white shadow-2xl lg:max-w-none"
-                  style={{
-                    background: `linear-gradient(135deg, ${leader.gradientFrom}, ${leader.gradientTo})`,
-                  }}
-                >
-                  {leader.initials}
-                </div>
+                {leader.image ? (
+                  <div className="relative aspect-[3/4] max-w-sm overflow-hidden rounded-2xl shadow-2xl lg:max-w-none">
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1024px) 384px, 40vw"
+                      priority={index === 0}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="flex aspect-[3/4] max-w-sm items-center justify-center rounded-2xl text-6xl font-bold text-white shadow-2xl lg:max-w-none"
+                    style={{
+                      background: `linear-gradient(135deg, ${leader.gradientFrom}, ${leader.gradientTo})`,
+                    }}
+                  >
+                    {leader.initials}
+                  </div>
+                )}
               </ScrollAnimation>
 
               {/* Content */}

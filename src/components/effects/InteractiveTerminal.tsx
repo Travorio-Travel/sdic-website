@@ -117,11 +117,12 @@ const commandResponses: Record<string, TerminalLine[]> = {
 export function InteractiveTerminal() {
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const [input, setInput] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
+  const [isTyping, setIsTyping] = useState(false);
   const [bootComplete, setBootComplete] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const hasBooted = useRef(false);
 
   const scrollToBottom = useCallback(() => {
     if (bodyRef.current) {
@@ -129,10 +130,30 @@ export function InteractiveTerminal() {
     }
   }, []);
 
-  // Boot sequence
+  // Trigger boot when terminal scrolls into view
   useEffect(() => {
-    if (hasBooted.current) return;
-    hasBooted.current = true;
+    if (hasStarted) return;
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  // Run boot sequence once triggered
+  useEffect(() => {
+    if (!hasStarted || bootComplete) return;
+    setIsTyping(true);
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -146,8 +167,9 @@ export function InteractiveTerminal() {
     let i = 0;
     const timer = setInterval(() => {
       if (i < bootSequence.length) {
-        setLines((prev) => [...prev, bootSequence[i]]);
+        const line = bootSequence[i];
         i++;
+        setLines((prev) => [...prev, line]);
         scrollToBottom();
       } else {
         clearInterval(timer);
@@ -157,7 +179,7 @@ export function InteractiveTerminal() {
     }, 80);
 
     return () => clearInterval(timer);
-  }, [scrollToBottom]);
+  }, [hasStarted, bootComplete, scrollToBottom]);
 
   const handleCommand = (cmd: string) => {
     const trimmed = cmd.trim().toLowerCase();
@@ -197,7 +219,7 @@ export function InteractiveTerminal() {
 
   return (
     <ScrollAnimation>
-      <div className="terminal mx-auto max-w-3xl crt-lines relative">
+      <div ref={containerRef} className="terminal mx-auto max-w-3xl crt-lines relative">
         {/* Terminal Header */}
         <div className="terminal-header">
           <div className="terminal-dot bg-[#FF5F57]" />

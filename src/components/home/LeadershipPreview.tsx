@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
@@ -28,15 +29,27 @@ export function LeadershipPreview() {
               direction={index === 0 ? 'left' : 'right'}
             >
               <CardSpotlight className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-                {/* Photo Placeholder */}
-                <div
-                  className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl text-2xl font-bold text-white"
-                  style={{
-                    background: `linear-gradient(135deg, ${leader.gradientFrom}, ${leader.gradientTo})`,
-                  }}
-                >
-                  {leader.initials}
-                </div>
+                {/* Photo */}
+                {leader.image ? (
+                  <div className="relative mb-6 h-20 w-20 overflow-hidden rounded-2xl">
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="80px"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl text-2xl font-bold text-white"
+                    style={{
+                      background: `linear-gradient(135deg, ${leader.gradientFrom}, ${leader.gradientTo})`,
+                    }}
+                  >
+                    {leader.initials}
+                  </div>
+                )}
 
                 <h3 className="text-xl font-semibold text-white">{leader.name}</h3>
                 <p className="mt-1 text-sm text-teal">{leader.title}</p>

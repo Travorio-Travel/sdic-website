@@ -5,6 +5,8 @@ import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ScrollProgress } from '@/components/shared/ScrollProgress';
+import { CommandPalette } from '@/components/effects/CommandPalette';
+import { ConsoleEasterEgg } from '@/components/effects/ConsoleEasterEgg';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -101,6 +103,8 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ScrollProgress />
+        <CommandPalette />
+        <ConsoleEasterEgg />
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />

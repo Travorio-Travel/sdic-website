@@ -5,6 +5,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
 import { Button } from '@/components/ui/Button';
 import { InteractiveTerminal } from '@/components/effects/InteractiveTerminal';
+import { ImmersiveTimeline } from '@/components/effects/ImmersiveTimeline';
 import { Globe, Layers, ShieldCheck, Lightbulb } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -219,6 +220,22 @@ export default function AboutPage() {
             />
           </ScrollAnimation>
           <InteractiveTerminal />
+        </Container>
+      </section>
+
+      {/* Roadmap Timeline */}
+      <section className="gradient-mesh-dark noise-overlay relative py-24 lg:py-32">
+        <Container className="relative z-10">
+          <ScrollAnimation>
+            <SectionHeader
+              overline="Roadmap"
+              title="A Practical Path Forward"
+              subtitle="Our phased approach balances immediate impact with long-term infrastructure development."
+              alignment="center"
+              theme="dark"
+            />
+          </ScrollAnimation>
+          <ImmersiveTimeline />
         </Container>
       </section>
 
