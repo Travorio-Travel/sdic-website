@@ -6,6 +6,7 @@ import { CardSpotlight } from '@/components/shared/CardSpotlight';
 import { Badge } from '@/components/ui/Badge';
 import { insights } from '@/data/insights';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Insights & Perspectives — Digital Transformation in Sudan',
@@ -27,25 +28,27 @@ export default function InsightsPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {insights.map((insight, i) => (
               <ScrollAnimation key={insight.slug} delay={i * 100}>
-                <CardSpotlight className="group h-full rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-teal/30 hover:shadow-lg">
-                  <Badge variant="navy" className="mb-4">
-                    {insight.category}
-                  </Badge>
-                  <h2 className="font-serif text-xl text-gray-800 transition-colors group-hover:text-teal-dark">
-                    {insight.title}
-                  </h2>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-500">
-                    {insight.excerpt}
-                  </p>
-                  <div className="mt-6 flex items-center justify-between">
-                    <div className="text-xs text-gray-400">
-                      <span>{insight.date}</span>
-                      <span className="mx-2">&bull;</span>
-                      <span>{insight.readTime}</span>
+                <Link href={`/insights/${insight.slug}`}>
+                  <CardSpotlight className="group h-full rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-teal/30 hover:shadow-lg">
+                    <Badge variant="navy" className="mb-4">
+                      {insight.category}
+                    </Badge>
+                    <h2 className="font-serif text-xl text-gray-800 transition-colors group-hover:text-teal-dark">
+                      {insight.title}
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                      {insight.excerpt}
+                    </p>
+                    <div className="mt-6 flex items-center justify-between">
+                      <div className="text-xs text-gray-400">
+                        <span>{insight.date}</span>
+                        <span className="mx-2">&bull;</span>
+                        <span>{insight.readTime}</span>
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-gray-300 transition-colors group-hover:text-teal" />
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-300 transition-colors group-hover:text-teal" />
-                  </div>
-                </CardSpotlight>
+                  </CardSpotlight>
+                </Link>
               </ScrollAnimation>
             ))}
           </div>
