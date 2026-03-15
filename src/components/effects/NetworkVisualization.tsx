@@ -15,7 +15,7 @@ interface Node {
 
 const NODE_COUNT = 60;
 const CONNECTION_DISTANCE = 180;
-const MOUSE_RADIUS = 200;
+const MOUSE_RADIUS = 300;
 
 export function NetworkVisualization() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -67,19 +67,19 @@ export function NetworkVisualization() {
       node.x = Math.max(0, Math.min(width, node.x));
       node.y = Math.max(0, Math.min(height, node.y));
 
-      // Mouse interaction — gentle repulsion
+      // Mouse interaction — responsive repulsion
       const dx = node.x - mouse.x;
       const dy = node.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < MOUSE_RADIUS && dist > 0) {
-        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.02;
+        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.15;
         node.vx += (dx / dist) * force;
         node.vy += (dy / dist) * force;
       }
 
       // Damping
-      node.vx *= 0.999;
-      node.vy *= 0.999;
+      node.vx *= 0.95;
+      node.vy *= 0.95;
 
       // Pulse
       node.pulsePhase += node.pulseSpeed;
