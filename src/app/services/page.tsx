@@ -5,12 +5,12 @@ import { ScrollAnimation } from '@/components/shared/ScrollAnimation';
 import { CardSpotlight } from '@/components/shared/CardSpotlight';
 import { Button } from '@/components/ui/Button';
 import { services } from '@/data/services';
+import { ArchitectureDiagram } from '@/components/effects/ArchitectureDiagram';
 import {
-  ArchitectureDiagram,
   governmentDiagram,
   healthcareDiagram,
   infrastructureDiagram,
-} from '@/components/effects/ArchitectureDiagram';
+} from '@/data/architecture-diagrams';
 import {
   Landmark,
   Construction,
