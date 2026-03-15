@@ -54,10 +54,10 @@ export function ArchitectureDiagram({
     return from === hoveredNode || to === hoveredNode;
   };
 
-  const nodeStyles = {
-    primary: 'fill-[#0A1628] stroke-[#0891B2]',
-    secondary: 'fill-[#1E3A5F] stroke-[#0891B2]/60',
-    tertiary: 'fill-[#1E3A5F] stroke-[#4A7C59]/60',
+  const nodeColors = {
+    primary: { fill: '#0A1628', stroke: '#0891B2' },
+    secondary: { fill: '#1E3A5F', stroke: 'rgba(8, 145, 178, 0.6)' },
+    tertiary: { fill: '#1E3A5F', stroke: 'rgba(74, 124, 89, 0.6)' },
   };
 
   return (
@@ -181,7 +181,8 @@ export function ArchitectureDiagram({
                 width="120"
                 height="36"
                 rx="8"
-                className={nodeStyles[node.type]}
+                fill={nodeColors[node.type].fill}
+                stroke={nodeColors[node.type].stroke}
                 strokeWidth={isHovered ? 2 : 1}
                 style={{ transition: 'stroke-width 0.2s' }}
               />
@@ -191,8 +192,10 @@ export function ArchitectureDiagram({
                 x={node.x}
                 y={node.y + 5}
                 textAnchor="middle"
-                className="fill-white text-[11px] font-medium"
-                style={{ fontFamily: 'var(--font-inter)' }}
+                fill="#FFFFFF"
+                fontSize="11"
+                fontWeight="500"
+                style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
               >
                 {node.label}
               </text>
