@@ -4,7 +4,7 @@ export const leaders: Leader[] = [
   {
     id: 'mazin-fagiri',
     name: 'Mazin Fagiri',
-    title: 'Co-Founder & Chief Technology Officer',
+    title: 'Co-Founder',
     shortBio: 'Telecommunications systems and infrastructure expert with 20+ years of experience in mobile communication platforms, cybersecurity, and large-scale technology deployment.',
     fullBio: [
       'Mazin Fagiri is a telecommunications and infrastructure technology veteran whose career spans over two decades of building, deploying, and securing communication systems at national scale. His expertise encompasses the full spectrum of telecommunications infrastructure — from mobile network architecture to cybersecurity operations to large-scale systems deployment.',
@@ -35,7 +35,7 @@ export const leaders: Leader[] = [
   {
     id: 'rami-taha',
     name: 'Rami Taha',
-    title: 'Co-Founder & Chief Executive Officer',
+    title: 'Co-Founder',
     shortBio: 'Principal Software Engineer with leadership experience across Fortune 500 enterprises including The Home Depot, JPMorgan Chase, and Fannie Mae. Founder & CEO of Travorio.',
     fullBio: [
       'Rami Taha is a Principal Software Engineer and technology entrepreneur whose career spans some of the most demanding enterprise technology environments in the world. From financial systems at JPMorgan Chase and Fannie Mae to large-scale retail platforms at The Home Depot, Rami has architected and delivered systems that serve millions of users and process billions in transactions.',
