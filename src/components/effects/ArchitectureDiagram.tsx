@@ -82,6 +82,10 @@ export function ArchitectureDiagram({
     tertiary: 'fill-[#1E3A5F] stroke-[#4A7C59]/60',
   };
 
+  if (!nodes?.length || !connections?.length) {
+    return <div className="h-[300px] rounded-xl bg-gray-100" />;
+  }
+
   return (
     <div ref={containerRef} className={cn('relative', className)}>
       {title && (
